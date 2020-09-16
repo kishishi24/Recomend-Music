@@ -1,183 +1,183 @@
 <!DOCTYPE html>
 <html lang="ja">
     <style>
-      .back{
-        background-image: url(img/back.jpg);
-        background-size: cover;   
-        padding-bottom: 10px;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+        }
+        .filter {
+        position: absolute;
+        left: -9999px;
+      }   
+
+      .burger {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
       }
-      h1 {
-        border-bottom: solid 3px #cce4ff;
+
+      .radios-boxes {
+        display: flex;
+      }
+
+      .radios {
+        display: flex;
+        filter: url('#gooeyness');
+        flex-direction: column;
+        overflow: hidden;
         position: relative;
       }
-      
-      h1:after {
+
+      .radio {
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 50%;
+        border: 16px solid #ccc;
+        cursor: pointer;
+        height: 60px;
+        margin: 10px;
+        outline: 0;
+        -webkit-tap-highlight-color: transparent;
+        transition: border-color 800ms;
+        width: 60px;
+      }
+
+      .radio.active {
+        border-color: white;
+      }
+
+      .ball {
+        background: white;
+        border-radius: 50%;
+        height: 40px;
+        left: 23px;
+        pointer-events: none;
         position: absolute;
-        content: " ";
-        display: block;
-        border-bottom: solid 3px #5472cd;
-        bottom: -3px;
-        width: 20%;
+        top: 23px;
+        transform: translateY(-80px);
+        transition: transform 800ms;
+        width: 40px;
       }
-    .main1{
-      position:relative;
-      top: 0px;
-      background-image:url(img/music1.jpg);   /* 画像のURLを指定       */
-      background-repeat:  no-repeat; 
-      background-size: cover;
-      width: 25%;
-      height: 500px;
-      float: left;      
-    }
-    .main2{
-      position: relative;
-      top: 0px;
-      background-image: url(img/music2.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 25%;
-      height: 500px;
-      float: left;
-    }
-    .main3{
-      position:relative;
-      top: 0px;
-      background-image: url(img/music3.jpg);
-      background-size: cover;
-      width: 25%;
-      height: 500px;
-      float: left;
-    }
-    .main4{
-      position:relative;
-      top: 0px;
-      background-image: url(img/music4.jpg);
-      background-size: cover;
-      width: 25%;
-      height: 500px;
-      float: left;
-    }
-    .button-1 {
-      display: inline-block;
-      font-size: "+4";
-      text-decoration: none;
-      color: #000000;
-      padding: 0%;
-      line-height: 120px;
-      border-radius: 50%;
-      border: solid 2px #000000;
-      text-align: center;
-      overflow: hidden;
-      font-weight: bold;
-      transition: .4s;
-      height: 30%;
-      width: 40%;
-      position: absolute;
-      top: 35%;
-      left: 30%;
-     }
-    .button-2 {
-      display: inline-block;
-      text-decoration: none;
-      padding: 0%;
-      color: #000000;
-      line-height: 120px;
-      border-radius: 50%;
-      border: solid 2px #000000;
-      text-align: center;
-      overflow: hidden;
-      font-weight: bold;
-      transition: .4s;
-      height: 30%;
-      width: 40%;
-      position: absolute;
-      top: 35%;
-      left: 30%;
-    }
-    .button-3 {
-      display: inline-block;
-      text-decoration: none;
-      color: #000000;
-      padding: 0%;
-      line-height: 120px;
-      border-radius: 50%;
-      border: solid 2px #000000;
-      text-align: center;
-      overflow: hidden;
-      font-weight: bold;
-      transition: .4s;
-      height: 30%;
-      width: 40%;
-      position: absolute;
-      top: 35%;
-      left: 30%;  
-    }
-    .button-4 {
-      display: inline-block;
-      text-decoration: none;
-      padding: 0%;
-      color: #000000;
-      line-height: 120px;
-      border-radius: 50%;
-      border: solid 2px #000000;
-      text-align: center;
-      overflow: hidden;
-      font-weight: bold;
-      transition: .4s;
-      height: 30%;
-      width: 40%;
-      position: absolute;
-      top: 35%;
-      left: 30%; 
-    }
-      .button-1:hover {
-        background: #ffc400;
-        color: #FFF;
-        box-shadow: 0px 15px 20px rgb(237, 240, 59);
-        transform: translateY(-7px);
+
+      .ball.pos0 {
+        transform: translateY(0px);
       }
-      .button-2:hover {
-        background-color: #ff0000;
-        box-shadow: 0px 15px 20px rgb(252, 17, 0);
-        color: #fff;
-        transform: translateY(-7px);
+
+      .ball.pos1 {
+        transform: translateY(80px);
       }
-      .button-3:hover {
-        background-color: #002fff;
-        box-shadow: 0px 15px 20px rgb(0, 153, 255);
-        color: #fff;
-        transform: translateY(-7px);
+
+    .ball.pos2 {
+      transform: translateY(160px);
+    }
+
+    .ball.pos3 {
+      transform: translateY(240px);
+    }
+    .labels {
+      margin-left: 5px;
+    }
+
+    .label {
+      color: #ccc;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      font-size: 45px;
+      font-family: "游明朝";
+      line-height: 50px;
+      padding: 15px 0;
+      -webkit-tap-highlight-color: transparent;
+      transition: color 800ms;
+    }
+
+    .label.active {
+      color: white;
+    }
+        .contents-bg {
+            background-image: url(img/back.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            overflow:hidden;
+        }
+
+        .contents {
+            background-color: rgba(0,0,0,0.6);
+            height: 100%;
+        }
+        .space{
+           position: relative;
+           top: 20%;
+           left: 25%; 
+        }
+        .space2{
+            position: relative;
+            top: 80%;
+            left: 80%;
+        }
+        h1 {
+        border-bottom: solid 3px #ff0000;
+        position: relative;
+        color: rgb(255, 255, 255);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 50px;
       }
-      .button-4:hover {
-        background-color: #00ff73;
-        box-shadow: 0px 15px 20px rgb(204, 245, 58);
-        color: #fff;
-        transform: translateY(-7px);
-      }</style>
-    <head>
-        <meta charset="UTF-8">
-        <title>音楽レコメンド</title>
- 
-    </head>
- 
+      h2{
+          color:#ccc;
+          font-family: "游明朝";
+          font-size: 25px;
+      }
+      h3{
+          color: #ccc;
+          font-family: "BIZ UDゴシック";
+      }
+    </style>
+    
     <body>
-      <div class="back">
-        <h1>チームJ　音楽レコメンド</h1>
-        <h3>あなたの気分に合わせた音楽をレコメンドします！<br>
-        下の四つのボタンから選択してください<br></h3>
-        <div class="main1">
-          <button class="button-1" button type="submit"><font size="+2" font face="游明朝">楽しい</font></button>
+        <div class="contents-bg">
+            <div class="contents">
+                <h1>Recomend Music</h1>
+                <h2>あなたの気分に合わせた曲をレコメンドします！下の４つの内から選択して下さい。</h2>
+                <div class="space2">
+                    <h3>開発：チームj</h3>
+                </div>
+                <div class="space">
+                <svg class="filter" version="1.1">
+                    <defs>
+                      <filter id="gooeyness">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="gooey" />
+                        <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+                      </filter>
+                    </defs>
+                  </svg>
+                  <div class="radios-boxes">
+                    <div class="radios">
+                      <input type="radio" name="radio" id="radio1" class="radio" value="r">
+                      <input type="radio" name="radio" id="radio2" class="radio" value="k">
+                      <input type="radio" name="radio" id="radio3" class="radio" value="t">
+                      <input type="radio" name="radio" id="radio4" class="radio" value="s">
+                      <div class="ball"></div>
+                    </div>
+                    <div class="labels">
+                      <label for="radio1" class="label">楽しい</label>
+                      <label for="radio2" class="label">激しい</label>
+                      <label for="radio3" class="label">悲しい</label>
+                      <label for="radio4" class="label">リラックス</label>
+                    </div>
+                  </div>
+            </div></div>
         </div>
-        <div class="main2">
-          <button class="button-2" button type="submit"><font size="+2" font face="游明朝">激しい</font></button>
-        </div>
-        <div class="main3">
-          <button class="button-3" button type="submit"><font size="+2" font face="游明朝">悲しい</font></button>
-        </div>
-        <div class="main4">
-          <button class="button-4" button type="submit"><font size="+2" font face="游明朝">リラックス</font></button>
-        </div>
-       </div> 
+        <script type="text/javascript" src="js/music.js"></script>
     </body>
- 
+
 </html>
