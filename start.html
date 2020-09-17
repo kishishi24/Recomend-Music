@@ -4,13 +4,14 @@
         * {
             margin: 0;
             padding: 0;
-        }
+        } /*ページ全体の余白の設定 */
         html{
             height: 100%;
         }
         body{
             height: 100%;
         }
+        /* ここからは、ラジオボタンのテンプレートを利用*/
         .filter {
         position: absolute;
         left: -9999px;
@@ -54,7 +55,7 @@
         border-color: white;
       }
 
-      .ball {
+      .ball {/* ここでボタンのボールの大きさが設定できる*/
         background: white;
         border-radius: 50%;
         height: 40px;
@@ -86,7 +87,7 @@
       margin-left: 5px;
     }
 
-    .label {
+    .label {/* ここで、ボタンに表示される文字の文体や大きさを設定*/
       color: #ccc;
       cursor: pointer;
       display: flex;
@@ -101,8 +102,8 @@
 
     .label.active {
       color: white;
-    }
-        .contents-bg {
+    }/* ここまでがボタンの設定*/
+        .contents-bg {/* 背景画像を入れるためのクラス*/
             background-image: url(img/back.jpg);
             background-size: cover;
             background-position: center;
@@ -110,22 +111,22 @@
             overflow:hidden;
         }
 
-        .contents {
+        .contents {/* 黒いフィルターをかけて見やすくする、そのためのクラス*/
             background-color: rgba(0,0,0,0.6);
             height: 100%;
         }
-        .space{
+        .space{/* ボタンの位置を調整するためのクラス*/
            position: relative;
-           top: 20%;
+           top: 20%;/* ここの値でボタンの位置を変更できる*/
            left: 25%; 
         }
-        .space2{
+        .space2{/* 画面右下にメッセージを表示させるためのクラス*/
             position: relative;
             top: 80%;
             left: 80%;
         }
-        h1 {
-        border-bottom: solid 3px #ff0000;
+        h1 {/* 見出しの設定*/
+        border-bottom: solid 3px #ff0000;/* 見出しの下線*/
         position: relative;
         color: rgb(255, 255, 255);
         font-family: 'Courier New', Courier, monospace;
@@ -143,15 +144,15 @@
     </style>
     
     <body>
-        <div class="contents-bg">
-            <div class="contents">
-                <h1>Recomend Music</h1>
+        <div class="contents-bg"><!--まずは背景画像を入れる-->
+            <div class="contents"><!--その後、黒いフィルターをかける -->
+                <h1>Recomend Music</h1><!--見出し -->
                 <h2>あなたの気分に合わせた曲をレコメンドします！下の４つの内から選択して下さい。</h2>
-                <div class="space2">
+                <div class="space2"><!--画面右下に小さく表示されるメッセージ-->
                     <h3>開発：チームj</h3>
                 </div>
-                <div class="space">
-                <svg class="filter" version="1.1">
+                <div class="space"><!--ボタンを配置するためのクラス、spaceの中にボタンをつくる-->
+                <svg class="filter" version="1.1"><!--ここからの塊はボタンを表示させるためのやつ、あんまり気にしなくて良い-->
                     <defs>
                       <filter id="gooeyness">
                         <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
@@ -174,10 +175,10 @@
                       <label for="radio3" class="label">悲しい</label>
                       <label for="radio4" class="label">リラックス</label>
                     </div>
-                  </div>
+                  </div><!--それぞれのクラスを順番に閉じる -->
             </div></div>
         </div>
-        <script type="text/javascript" src="js/music.js"></script>
+        <script type="text/javascript" src="js/music.js"></script><!--ボタンを動かすためのjsファイルを読み込み-->
     </body>
 
 </html>
